@@ -468,6 +468,8 @@
 "Assets/Scripts/Search.cs"
 "Assets/Scripts/Test.cs"
 "Assets/Scripts/VideoProgress.cs"
+"Assets/Scripts/Visualizer/AudioVisualizer.cs"
+"Assets/Scripts/Visualizer/VisualizerButton.cs"
 "Assets/Scripts/Volume/VolumeImage.cs"
 "Assets/Scripts/Volume/VolumeSlider.cs"
 "Assets/Scripts/WebBrowsing.cs"
