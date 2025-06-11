@@ -14,7 +14,7 @@ namespace DefaultNamespace {
         private const float SpectrumScale = 12f;
         private const float MinSpectrumScale = 0.1f;
         private const float MaxSpectrumScale = 4.5f;
-        private const float LerpScale = 30;
+        private const float LerpScale = 15;
         
         private const float Margin = 0.05f;
         

@@ -90,7 +90,7 @@ public partial class MusicPlayer {
         var updateTarget = directory
             .GetFiles("*.mp3")
             .Select(fileinfo => fileinfo.Name)
-            .Except(_audioData.Url, StringComparer.InvariantCultureIgnoreCase);
+            .Except(_audioData.Paths, StringComparer.InvariantCultureIgnoreCase);
 
         int cnt = 0;
         foreach (var target in updateTarget) {
@@ -190,10 +190,25 @@ public partial class MusicPlayer {
         UpdateList();
     }
 
-    public void RenamePlaylist(string origin, string newName) {
-        if (_playList == origin)
+    public bool RenamePlaylist(string origin, string newName) {
+        var result = _audioData.Rename(origin, newName);
+        
+        if (result && _playList == origin)
             _playList = newName;
-        _audioData.Rename(origin, newName);
+
+        if (result)
+            UpdateList();
+        
+        return result;
+    }
+
+    public bool MakePlaylist(string playlistName) {
+        
+        var result = _audioData.MakePlaylist(playlistName);
+
+        if (result)
+            UpdateList();
+        return result;
     }
     
     public void SelectPlayList(string playList) {
@@ -207,7 +222,7 @@ public partial class MusicPlayer {
             case PlaylistSelectType.AddToPlayList:
                 PlayListShowerUpdate();
                 _audioData.AddToPlayList(playList, _addTarget);
-                var targetName = Path.GetFileNameWithoutExtension(_audioData.Url[_addTarget]);
+                var targetName = Path.GetFileNameWithoutExtension(_audioData.Paths[_addTarget]);
                 Log.Instance.ShowLog($"{targetName} is added to {playList}");
                 break;               
         }

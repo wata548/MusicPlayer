@@ -12,6 +12,10 @@ namespace DefaultNamespace {
         [SerializeField] private TMP_Text _progress;
         [SerializeField] private TMP_Text _playlistProgress;
 
+        public void Kill() {
+            YoutubeDownload.TaskKill();
+        } 
+        
         private void Update() {
 
             if (YoutubeDownload.Downloading) {

@@ -50,7 +50,7 @@ public static class YoutubeDownload {
 
         string ytDlpPath = Path.Combine(Application.streamingAssetsPath , "yt-dlp.exe");
         string outputFolder = Path.Combine(Application.streamingAssetsPath, "Music");
-        string arguments = $"--no-progress -x --audio-format mp3 --audio-quality 0 -o \"{outputFolder}/%(title)s.%(ext)s\" \"{link}\"";
+        string arguments = $"--no-progress -x --audio-format mp3 --audio-quality 0 -o \"{outputFolder}/%(title)s(by: %(uploader)s).%(ext)s\" \"{link}\"";
 
         StringBuilder builder = new();
         _process = new Process {

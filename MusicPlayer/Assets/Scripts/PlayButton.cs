@@ -16,7 +16,8 @@ namespace DefaultNamespace {
         //
         //in playlist 
         //left-click => interact
-        //right-click => Rename playlist
+        // + Ctrl => rename or make playlist
+        //right-click => no action
         // + Ctrl => Erase this playlist
         
         private const int CharacterLimit = 42;
@@ -78,10 +79,6 @@ namespace DefaultNamespace {
             if (!IsMusicMode) {
                 if (isFunction)
                     MusicPlayer.Instance.DeletePlayList(PlayList);
-                else {
-                    //TODO: Rename system;
-                    //MusicPlayer.Instance.RenamePlaylist();
-                }
                 return;
             }
             
@@ -97,7 +94,13 @@ namespace DefaultNamespace {
 
             if (!IsMusicMode) {
 
-                if (!string.IsNullOrWhiteSpace(PlayList))
+                bool isFunction = Input.GetKey(MusicPlayer.FunctionKey);
+
+                if (isFunction) {
+                    //if PlayList is is null or white space make new playList
+                    RenameManger.Instance.Rename(PlayList);
+                }
+                else if (!string.IsNullOrWhiteSpace(PlayList))
                     MusicPlayer.Instance.SelectPlayList(PlayList);
                 
                 return;

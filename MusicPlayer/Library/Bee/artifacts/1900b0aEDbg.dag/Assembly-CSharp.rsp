@@ -465,6 +465,7 @@
 "Assets/Scripts/Player/MusicPlayer.cs"
 "Assets/Scripts/Player/MusicPlayList.cs"
 "Assets/Scripts/PlayListInfo.cs"
+"Assets/Scripts/RenameManger.cs"
 "Assets/Scripts/Search.cs"
 "Assets/Scripts/Test.cs"
 "Assets/Scripts/VideoProgress.cs"

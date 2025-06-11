@@ -13,7 +13,7 @@ public class PlayListInfo {
     public const string All = "All";   
     
     [JsonProperty]
-    public List<string> Url { get; private set; } = new();
+    public List<string> Paths { get; private set; } = new();
     [JsonProperty]
     public Dictionary<string, List<int>> PlayList { get; private set; } = new();
 
@@ -27,7 +27,7 @@ public class PlayListInfo {
         PlayList[playList][i];
     
     public string GetLink(string playList, Index i) =>
-        Url[PlayList[playList][i]];
+        Paths[PlayList[playList][i]];
 
     public void AddToPlayList(string playlist, int idx) {
         bool isAddable = true;
@@ -48,9 +48,9 @@ public class PlayListInfo {
 
         PlayList.TryAdd(playList,new());
         
-        for (int i = 0; i < Url.Count; i++) {
+        for (int i = 0; i < Paths.Count; i++) {
 
-            if (Url[i].Equals(context)) {
+            if (Paths[i].Equals(context)) {
                 
                 if(!playList.Equals(All))
                     PlayList[playList].Add(i);
@@ -58,10 +58,10 @@ public class PlayListInfo {
             }
         }
      
-        Url.Add(context);
-        PlayList[playList].Add(Url.Count - 1);
+        Paths.Add(new(context));
+        PlayList[playList].Add(Paths.Count - 1);
         if(!playList.Equals(All)) {
-            PlayList[playList].Add(Url.Count - 1);
+            PlayList[playList].Add(Paths.Count - 1);
         }
     }
     
@@ -76,17 +76,33 @@ public class PlayListInfo {
         Log.Instance.ShowLog($"{cnt} file is deleted on thrash bin");
     }
 
-    public void Rename(string origin, string newName) {
+    public bool Rename(string origin, string newName) {
+
+        if (string.IsNullOrWhiteSpace(newName))
+            return false;
+        
         if (!PlayList.ContainsKey(origin))
-            return;
+            return false;
 
         PlayList[newName] = PlayList[origin];
         PlayList.Remove(origin);
+        return true;
+    }
+
+    public bool MakePlaylist(string playlistName) {
+        if (string.IsNullOrWhiteSpace(playlistName))
+            return false;
+        
+        if (PlayList.ContainsKey(playlistName))
+            return false;
+
+        PlayList.Add(playlistName, new());
+        return true;
     }
     
     public void Remove(int target) {
 
-        var targetPath = Url[target];
+        var targetPath = Paths[target];
         var targetName = Path.GetFileName(targetPath);
         var trashBin = Path.Combine(Application.streamingAssetsPath, "Thrash");
         var destination = Path.Combine(trashBin, targetName);
@@ -97,11 +113,11 @@ public class PlayListInfo {
         }
         catch (IOException) {
             
-            File.Delete(Url[target]);
+            File.Delete(Paths[target]);
             Debug.Log("this file already exist on thrash bin");
         }
 
-        Url.RemoveAt(target);
+        Paths.RemoveAt(target);
 
         var result = new Dictionary<string, List<int>>();
         foreach (var playlist in PlayList) {
@@ -123,7 +139,7 @@ public class PlayListInfo {
             .Where(element => element != idx)
             .ToList();
 
-        var name = Path.GetFileNameWithoutExtension(Url[idx]);
+        var name = Path.GetFileNameWithoutExtension(Paths[idx]);
         Log.Instance.ShowLog($"{name} is deleted on {playlist} playlist");
     }
 
