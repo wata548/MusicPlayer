@@ -1,0 +1,26 @@
+{
+  "Url": [
+    "C:/Users/wata/Desktop/Unity/MusicPlayer/MusicPlayer/Assets/StreamingAssets\\Music\\0001. 【BGA】 nora2r - B.B.K.K.B.K.K. 【FRENZ2013⧸BOF2013】.mp3",
+    "C:/Users/wata/Desktop/Unity/MusicPlayer/MusicPlayer/Assets/StreamingAssets\\Music\\0003. 【BGA】 Aoi - c.s.q.n. 【BOFXV】.mp3",
+    "C:/Users/wata/Desktop/Unity/MusicPlayer/MusicPlayer/Assets/StreamingAssets\\Music\\02. 【初音ミク(40㍍)】 からくりピエロ Karakuri Pierrot【オリジナル】.mp3",
+    "C:/Users/wata/Desktop/Unity/MusicPlayer/MusicPlayer/Assets/StreamingAssets\\Music\\02. いつも何度でも (木村弓) ／ダズビー COVER.mp3",
+    "C:/Users/wata/Desktop/Unity/MusicPlayer/MusicPlayer/Assets/StreamingAssets\\Music\\『AKAGE [赤毛]』(feat. Hatsune Miku) ｜｜ Smily's Originals.mp3",
+    "C:/Users/wata/Desktop/Unity/MusicPlayer/MusicPlayer/Assets/StreamingAssets\\Music\\01. 回る空うさぎ (Orangestar) ／ダズビー COVER.mp3",
+    "C:/Users/wata/Desktop/Unity/MusicPlayer/MusicPlayer/Assets/StreamingAssets\\Music\\0002. USAO - Phalanx.mp3"
+  ],
+  "PlayList": {
+    "All": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "test3": [],
+    "test4": [
+      1
+    ]
+  }
+}

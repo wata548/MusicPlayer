@@ -12,6 +12,11 @@ namespace DefaultNamespace {
         private bool _onMouse = false;
         [SerializeField] private VolumeSlider _slider;
         private Tween _animation;
+
+        private void Awake() {
+            
+            MusicPlayer.Instance.SetVolume(_slider.Volume);
+        }
         
         private void Update() {
 

@@ -68,6 +68,16 @@
       "source": "builtin",
       "testable": false
     },
+    "com.unity.nuget.newtonsoft-json@3.2.1": {
+      "name": "com.unity.nuget.newtonsoft-json",
+      "displayName": "Newtonsoft Json",
+      "resolvedPath": "C:\\Users\\wata\\Desktop\\Unity\\MusicPlayer\\MusicPlayer\\Library\\PackageCache\\com.unity.nuget.newtonsoft-json@74deb55db2a0",
+      "fingerprint": "74deb55db2a0c29ddfda576608bcb86abbd13ee6",
+      "editorCompatibility": "2018.4.0a1",
+      "version": "3.2.1",
+      "source": "registry",
+      "testable": false
+    },
     "com.unity.render-pipelines.universal@17.0.4": {
       "name": "com.unity.render-pipelines.universal",
       "displayName": "Universal Render Pipeline",

@@ -7,14 +7,14 @@ namespace DefaultNamespace {
 
     public class VolumeSlider: MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
         [SerializeField] private Slider _slider;
-        [SerializeField] private AudioSource _player;
 
         public Transform SliderTransform => _slider.transform;
         
         public bool OnMouse { get; private set; } = false;
+        public float Volume => _slider.value;
         
         public void ChangeVolume() {
-            _player.volume = _slider.value;
+            MusicPlayer.Instance.SetVolume(Volume);
         }
 
         public void OnPointerEnter(PointerEventData eventData) {
