@@ -15,6 +15,8 @@ public partial class MusicPlayer : MonoSingleton<MusicPlayer> {
     private const float PrefabSize = 40;
     private const float ScrollPower = 25;
     private const int StartIndex = -3;
+    private const int SongNameMaxLatter = 42;
+    
     public static readonly KeyCode FunctionKey = KeyCode.LeftControl;
     
     [SerializeField] private AudioSource _player;
@@ -65,8 +67,11 @@ public partial class MusicPlayer : MonoSingleton<MusicPlayer> {
         var name = Path.GetFileNameWithoutExtension(path);
         if (name.Length >= 28)
             name = name.SetFontSizeByPercent(0.8f);
-        
-        _songName.text = name;
+
+        if (name.Length > SongNameMaxLatter) 
+            _songName.text = name.Substring(0, SongNameMaxLatter) + "...";
+        else 
+            _songName.text = name;
         StartCoroutine(Mp3Load.LoadMP3(path));
     }
     public void Pause() {

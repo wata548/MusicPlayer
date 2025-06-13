@@ -59,7 +59,7 @@ public class PlayListInfo {
         }
      
         Paths.Add(new(context));
-        PlayList[playList].Add(Paths.Count - 1);
+        PlayList[All].Add(Paths.Count - 1);
         if(!playList.Equals(All)) {
             PlayList[playList].Add(Paths.Count - 1);
         }

@@ -50,21 +50,18 @@ public static class YoutubeDownload {
 
         string ytDlpPath = Path.Combine(Application.streamingAssetsPath , "yt-dlp.exe");
         string outputFolder = Path.Combine(Application.streamingAssetsPath, "Music");
-        string arguments = $"--no-progress -x --audio-format mp3 --audio-quality 0 -o \"{outputFolder}/%(title)s(by: %(uploader)s).%(ext)s\" \"{link}\"";
+        string arguments = $"-x --audio-format mp3 --ffmpeg-location \"{Application.streamingAssetsPath}\" --audio-quality 0 -o \"{outputFolder}/%(title)s(%(uploader)s).%(ext)s\" \"{link}\"";
 
         StringBuilder builder = new();
         _process = new Process {
             
-            StartInfo = new ProcessStartInfo {
+            	StartInfo = new ProcessStartInfo {
                 FileName = ytDlpPath,
                 Arguments = arguments,
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 UseShellExecute = false,
-                CreateNoWindow = true,
-                StandardOutputEncoding = Encoding.UTF8,
-                StandardInputEncoding = Encoding.UTF8,
-                StandardErrorEncoding = Encoding.UTF8
+                CreateNoWindow = true
             }
         };
 
@@ -74,6 +71,7 @@ public static class YoutubeDownload {
             if (string.IsNullOrEmpty(message.Data))
                 return;
 
+            Debug.Log(message.Data);
             var fileName = Regex.Match(message.Data, @"\[download\] Destination: (.+)");
             var playList = Regex.Match(message.Data, @"Downloading item (\d+) of (\d+)");
             var percent = Regex.Match(message.Data, @"(\d+.\d+)% of ~   (\d+.\d+)MiB");
